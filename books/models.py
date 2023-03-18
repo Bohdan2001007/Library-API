@@ -12,3 +12,9 @@ class Book(models.Model):
     cover = models.CharField(max_length=1, choices=choice_of_cover)
     inventory = models.IntegerField(validators=[MinValueValidator(1)])
     Dailyfee = models.DecimalField(max_digits=4, decimal_places=2)
+
+    class Meta:
+        verbose_name = "Books"
+
+    def __str__(self):
+        return self.title
