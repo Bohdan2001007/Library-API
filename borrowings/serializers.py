@@ -8,7 +8,7 @@ from user.models import User
 class BorrowingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Borrowing
-        fields = ['borrow_date', 'expected_return_date', 'actual_return_date']
+        fields = ['borrow_date', 'expected_return_date', 'actual_return_date', 'is_active']
 
 
 class BorrowingCreateSerializer(serializers.ModelSerializer):

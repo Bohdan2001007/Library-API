@@ -16,12 +16,14 @@ class BorrowingList(generics.ListCreateAPIView):
         return BorrowingSerializer
 
     def get_queryset(self):
-        """
-        This view should return a list of all the borrowings
-        for the currently authenticated user.
-        """
         user = self.request.user
-        return Borrowing.objects.filter(client=user)
+        queryset = Borrowing.objects.filter(clients=user)
+
+        is_active = self.request.query_params.get("is_active")
+
+        if is_active:
+            queryset = queryset.filter(is_active=is_active)
+        return queryset
 
 
 class BorrowingDetail(generics.RetrieveUpdateDestroyAPIView):
