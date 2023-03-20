@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'books',
     'user',
+    'borrowings',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,5 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "ROTATE_REFRESH_TOKEN": True,
 }
+
+AUTH_USER_MODEL = 'user.User'
