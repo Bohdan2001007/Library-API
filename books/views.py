@@ -1,13 +1,20 @@
-from rest_framework import viewsets, permissions
-from rest_framework.authentication import TokenAuthentication
+from rest_framework import viewsets
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Book
-from .serializers import BookSerializer
 from .permissions import IsAdminOrReadOnly
+from .serializers import BookSerializer
 
 
 class BookViewSet(viewsets.ModelViewSet):
+    """
+        Perform CRUD operations on books.
+
+        - Retrieve a list of all books or a single book by its id.
+        - Create, update, or delete a book (only available to admin users).
+        - Authenticated users will see all books.
+        - Unauthenticated users will only see books with inventory greater than 0.
+    """
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     permission_classes = [IsAdminOrReadOnly] # Change permission class to custom class

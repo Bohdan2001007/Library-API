@@ -1,14 +1,15 @@
+import datetime
+from datetime import datetime
+
 from django.test import TestCase
-from borrowings.serializers import BorrowingSerializer, BorrowingCreateSerializer
-from collections import OrderedDict
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-from user.models import User
+
 from books.models import Book
 from borrowings.models import Borrowing
-from datetime import datetime
-import datetime
+from borrowings.serializers import BorrowingSerializer, BorrowingCreateSerializer
+from user.models import User
 
 
 class TestBorrowingModel(TestCase):

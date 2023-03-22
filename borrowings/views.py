@@ -6,6 +6,14 @@ from .serializers import BorrowingSerializer, BorrowingCreateSerializer
 
 
 class BorrowingList(generics.ListCreateAPIView):
+    """
+        List all borrowing records or create a new borrowing record.
+
+        - Authenticated users can view their own borrowing records.
+        - Staff users can view the borrowing records of a specific user by providing a user_id in the query parameters.
+        - The is_active query parameter can be used to filter borrowing records based on their active status.
+        - To create a new borrowing record, provide book_id and expected_return_date.
+    """
     queryset = Borrowing.objects.all()
     serializer_class = BorrowingSerializer
     permission_classes = (IsAuthenticated,)
@@ -35,6 +43,12 @@ class BorrowingList(generics.ListCreateAPIView):
 
 
 class BorrowingDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+        Retrieve, update or delete a borrowing record.
+
+        - Authenticated users can view, update, or delete their own borrowing records.
+        - Staff users can view, update, or delete any borrowing record.
+    """
     queryset = Borrowing.objects.all()
     serializer_class = BorrowingSerializer
     permission_classes = (IsAuthenticated,)

@@ -1,9 +1,10 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import serializers
+
 from books.models import Book
+from user.models import User
 from user.serializers import UserSerializer
 from .models import Borrowing
-from user.models import User
 
 
 class BorrowingSerializer(serializers.ModelSerializer):
