@@ -17,12 +17,20 @@ class BorrowingList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Borrowing.objects.filter(clients=user)
+        queryset = Borrowing.objects.filter(client=user)
 
         is_active = self.request.query_params.get("is_active")
 
         if is_active:
             queryset = queryset.filter(is_active=is_active)
+
+        user_id = self.request.query_params.get("user_id")
+
+        if user.is_staff and user_id:
+            queryset = queryset.filter(client=user_id)
+        else:
+            queryset = queryset.filter(client=user)
+
         return queryset
 
 

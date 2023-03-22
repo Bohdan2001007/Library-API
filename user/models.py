@@ -27,9 +27,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30, unique=True)
-    first_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, blank=False)
     last_name = models.CharField(max_length=30)
-    book = models.ManyToManyField('books.Book', blank=True)
     is_staff = models.BooleanField(default=False)
 
     groups = models.ManyToManyField(

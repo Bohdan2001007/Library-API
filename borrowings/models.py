@@ -5,8 +5,8 @@ class Borrowing(models.Model):
     borrow_date = models.DateField(auto_now_add=True)
     expected_return_date = models.DateField()
     actual_return_date = models.DateField(null=True, blank=True)
-    book = models.ManyToManyField('books.Book')
-    clients = models.ManyToManyField('user.User', related_name='borrowings')
+    book = models.ForeignKey('books.Book', on_delete=models.CASCADE, default=1)
+    client = models.ForeignKey('user.User', on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

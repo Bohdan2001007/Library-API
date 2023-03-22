@@ -11,9 +11,9 @@ class Book(models.Model):
     title = models.CharField(max_length=20)
     author = models.CharField(max_length=30)
     cover = models.CharField(max_length=1, choices=choice_of_cover)
-    inventory = models.IntegerField(validators=[MinValueValidator(1)])
+    inventory = models.PositiveIntegerField(default=1)
     Dailyfee = models.DecimalField(max_digits=4, decimal_places=2)
-    clients = models.ManyToManyField('user.User', related_name='books')
+    client = models.ManyToManyField('user.User', related_name='books')
     borrowings = models.ManyToManyField(Borrowing, related_name='books')
 
     class Meta:
