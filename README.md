@@ -26,12 +26,12 @@ pip install -r requirements.txt
 
 - python manage.py runserver
 
-Access
+# Access
 
 - api/user/register
 
 - get access token via api//user/token/
 
-Secret Key
+# Secret Key
 
 - create your own .env file and store your own secret key here, like in .env_sample
