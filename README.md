@@ -15,10 +15,14 @@ API service that helps the library manage borrowings
 # Installing
 
 - git clone git@github.com:Bohdan2001007/Library-API.git
-cd Library-API
-python -m venv venv
-sourve venv/bin/activate
-pip install -r requirements.txt
+
+- cd Library-API
+
+- python -m venv venv
+
+- sourve venv/bin/activate
+
+- pip install -r requirements.txt
 
 # Run locally
 
