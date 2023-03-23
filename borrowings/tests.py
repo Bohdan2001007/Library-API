@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
-
+from collections import OrderedDict
 from books.models import Book
 from borrowings.models import Borrowing
 from borrowings.serializers import BorrowingSerializer, BorrowingCreateSerializer
@@ -45,14 +45,14 @@ class BorrowingSerializerTestCase(TestCase):
             'expected_return_date': '2023-04-01',
             'actual_return_date': None,
             'book': self.book.id,
-            'client': [
+            'client': OrderedDict([
                 ('id', self.client.id),
                 ('username', 'test_user'),
                 ('email', 'test@example.com'),
                 ('first_name', ''),
                 ('last_name', ''),
                 ('is_staff', False),
-            ],
+            ]),
             'is_active': True
         }
 
