@@ -34,7 +34,7 @@ API service that helps the library manage borrowings
 
 - api/user/register
 
-- get access token via api//user/token/
+- get access token via api/user/token/
 
 # Secret Key
 
